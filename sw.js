@@ -1,9 +1,7 @@
 const CACHE_NAME = "etiquetas-cache-v1";
 const urlsToCache = [
-  "/",
+  "/",              // index.html
   "/index.html",
-  "/style.css",
-  "/app.js",
   "/manifest.json"
 ];
 
@@ -18,7 +16,11 @@ self.addEventListener("install", event => {
 self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys.map(key => key !== CACHE_NAME && caches.delete(key)))
+      Promise.all(
+        keys
+          .filter(key => key !== CACHE_NAME)
+          .map(key => caches.delete(key))
+      )
     )
   );
 });
