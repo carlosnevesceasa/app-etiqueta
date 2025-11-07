@@ -1,4 +1,4 @@
-const CACHE_NAME = "etiquetas-cache-v5";
+const CACHE_NAME = "etiquetas-cache-v6";
 const urlsToCache = [ "/", "/index.html", "/manifest.json" ];
 
 self.addEventListener("install", event=>{
